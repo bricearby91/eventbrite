@@ -1,11 +1,11 @@
 class Event < ApplicationRecord
-	validates :divides_by_5, :start_date_cannot_be_past
+	validate :divides_by_5, :start_date_cannot_be_past
 
 	validates :start_date,
-		presence: true,
+		presence: true
 		
 	validates :duration,
-		presence: true,
+		presence: true
 	validates :title,
 		presence: true,
 		length: { in: 20..1000 }
@@ -25,7 +25,7 @@ class Event < ApplicationRecord
 	private
 
 	def divides_by_5
-		if duration =< 0
+		if duration <= 0
 			errors.add(:duration, "has to be greater than zero")
 		elsif duration % 5 != 0
 			errors.add(:duration, "has to be a mulltiple of 5")
