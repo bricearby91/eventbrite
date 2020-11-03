@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-	default from: 'brice.arby91@gmail.com'
+	default from: 'brice.arby@gmail.com'
 
 	def welcome_email(user)
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
@@ -12,4 +12,10 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Bienvenue chez nous !') 
   end	
 
+	def confirmation_email(attendance)
+		@attendance=attendance
+		@user=@attendance.user
+		mail(to: @user.email, subject: "Confirmation de votre participation à l'événement : #{@attendance.event.title}")
+	end
+	
 end

@@ -5,6 +5,7 @@ ruby '2.7.1'
 
 gem 'sendgrid-ruby'
 gem 'faker'
+gem 'devise'
 
 gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

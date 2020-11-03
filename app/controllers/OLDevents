@@ -1,0 +1,22 @@
+class EventsController < ApplicationController
+  def index
+  end
+
+	def new
+	end
+
+	def create
+		if current_user
+		@event=Event.new(user:current_user)
+	
+		else
+		@event=Event.new
+		end
+
+		if @event.save
+
+		else
+			render :error
+		end
+end
+end

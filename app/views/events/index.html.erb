@@ -1,0 +1,17 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Bienvenue sur le site web d'Eventbrite !</h1>
+    <p class="lead">Le site de gestion de tous vos événements</p>
+  </div>
+</div>
+<br>
+<h3>Rappel des prochains événements organisés :</h3>
+<%Event.all.each do |event|%>
+<p>Intitulé : <%=event.title%></p>
+<p>Prix d'un billet : <%=event.price%> euros</p>
+<p>Lieu : <%=event.location%></p>
+<p>Date : <%=event.start_date%></p>
+
+<p>En savoir plus sur <%= link_to "cet événement", event_path(event.id) %></p>
+
+<%end%>
