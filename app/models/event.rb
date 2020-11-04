@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-	validate :divides_by_5, :start_date_cannot_be_past
+	validate :divides_by_5#, :start_date_cannot_be_past
 
 	validates :start_date,
 		presence: true
@@ -8,7 +8,7 @@ class Event < ApplicationRecord
 		presence: true
 	validates :title,
 		presence: true,
-		length: { in: 20..1000 }
+		length: { in: 12..1000 }
 	validates :description,
 		presence: true,
 		length: { in: 20..1000 }

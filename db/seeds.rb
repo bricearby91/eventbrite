@@ -8,12 +8,24 @@
 
 require 'faker'
 
-5.times do 
+Event.destroy_all
+User.destroy_all
+Attendance.destroy_all
+
+15.times do 
 		
 	first_name=Faker::Name.first_name	
 
-	User.create(first_name:first_name,last_name:Faker::Name.last_name,email:"#{first_name}@yopmail.com")
+	User.create(first_name:first_name,last_name:Faker::Name.last_name,email:"#{first_name}@yopmail.com",password:Faker::String.random(length: 6..10))
 end
 
-Event.create(user:User.first,start_date:Time.now+3600*24*3,duration:14400, title:"Petite teuf chez Lucas", description:"drfghjkzjfijegzjgipjpzizrh", price:15, location:"Sceaux")
+event_type= ["pendaison de crémaillere","apéritif","dîner","fête","goûter","déjeuner","brunch","soirée d'anniversaire","baby shower"] 
+
+
+15.times do
+
+organiser=User.all.sample
+Event.create(user:organiser,start_date:Time.now+(3600*24*rand(1..7)),duration:(3600*rand(2..6)), title:"#{event_type.sample.capitalize} chez #{organiser.first_name.capitalize}", description:"Un événement festif et sympa pour une occasion très spéciale..", price:rand(1..40), location:Faker::Address.city)
+
+end
 

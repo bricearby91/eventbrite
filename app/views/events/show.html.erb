@@ -1,1 +1,11 @@
-<h1>Page dédiée à l'événement</h1>
+<br>
+<h1>Page dédiée à l'événement "<%= @event.title %>" </h1>
+
+<br>
+<p>Organisateur : <%= @event.user.first_name %> <%= @event.user.last_name %></p>
+<p>Lieu : <%= @event.location %></p>
+<p>Date : <%= (@event.start_date).strftime("%d/%m/%Y") %></p>
+<p>Heure : <%= (@event.start_date).strftime("%k:%M") %></p>
+<p>Participation financière exigée : <%= @event.price %> euros</p>
+<p>Description : <%= @event.description %></p>
+<p>Durée : <%= @duration %> heures</p>

@@ -4,3 +4,16 @@
 <p>Votre nom de famille : <%=@user.last_name%></p>
 <p>Votre adresse e-mail : <%=@user.email%></p>
 <p>Votre description : <%=@user.description%></p>
+<br>
+<h4>Evénements organisés par <%=@user.first_name %> :</h4>
+<% Event.where(user:@user).each do |event| %>
+<br>
+<div class="card">
+<div class="card-body">
+<h5 class="card-title"><%= event.title %></h5>
+ <p class="card-text">Envie d'en savoir plus ?</p>
+    <%= link_to "Cliquez ici", event_path(event.id), class:"btn btn-primary" %>
+</div>
+</div>
+<br>
+<% end %>
